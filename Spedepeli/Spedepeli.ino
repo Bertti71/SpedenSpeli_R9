@@ -20,7 +20,7 @@ bool gameActive = false; // Onko peli käynnissä?
 
 // Funktio, joka generoi satunnaisen numerosarjan
 void generateSequence() {
-  Serial.println("Generoidaan satunnainen numerosarja...");
+  Serial.println("generoidaan numerosarja");
   for (int i = 0; i < 100; i++) {
     randomNumbers[i] = random(0, 4); // Numerot välillä 0-3
     Serial.print(randomNumbers[i]);
@@ -31,9 +31,9 @@ void generateSequence() {
 
 // Funktio, joka näyttää pelaajalle numerosarjan
 void showSequence() {
-  Serial.print("Näytetään numerosarja (pituus ");
+  
   Serial.print(sequenceLength);
-  Serial.println("):");
+  
   for (int i = 0; i < sequenceLength; i++) {
     Serial.print("LED ");
     Serial.println(A2 + randomNumbers[i]);
@@ -49,7 +49,7 @@ bool checkUserInput() {
     int buttonIndex = pinPressed - 2; // Selvitetään napin indeksi
     pinPressed = 0; // Nollataan pinPressed
 
-    Serial.print("Nappia painettu: ");
+    Serial.print("nappia painettu: ");
     Serial.println(buttonIndex);
 
     if (buttonIndex != randomNumbers[playerPosition]) {
@@ -57,7 +57,7 @@ bool checkUserInput() {
       return false; // Pelaajan syöte ei täsmää sarjan kanssa
     }
 
-    Serial.println("Oikea syöte!");
+    Serial.println("oikea syöte");
     userNumbers[playerPosition] = buttonIndex; // Tallennetaan pelaajan syöte
     playerPosition++; // Siirrytään seuraavaan sijaintiin
     return true;
@@ -67,9 +67,9 @@ bool checkUserInput() {
 
 
 void startGame() {
-  Serial.println("Aloitetaan uusi peli...");
+  Serial.println("peli alkaa");
   lcd.clear();
-  lcd.print("Aloitetaan peli...");
+  lcd.print("game is starting");
   delay(1000);
 
   // Nollataan pelin muuttujat
